@@ -77,8 +77,8 @@ function populateDatabase(cb, index=0){
 }
 
 function listenRoute(){
-	app.post('/api/chords/v1', function (req, res) {
-		var chord = req.body.chord
+	app.get('/api/chords/v1', function (req, res) {
+		var chord = req.query['chord']
 		if(chord){
 			chord = chord.replace(/(\d)\+/g,'Maj$1')
 			collection.findOne({name:chord},function(err, docs) {
