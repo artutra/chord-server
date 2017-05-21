@@ -81,6 +81,8 @@ function listenRoute(){
 		var chord = req.query['chord']
 		if(chord){
 			chord = chord.replace(/(\d)\+/g,'Maj$1')
+			chord = chord.replace(/(\d)\M/g,'Maj$1')
+			chord = chord.replace(/º/g, '°')
 			collection.findOne({name:chord},function(err, docs) {
 				res.send(docs)
 			});
